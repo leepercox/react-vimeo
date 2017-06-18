@@ -225,7 +225,6 @@ export default React.createClass({
           this.onError(err);
         }
         debug('jsonp response', res);
-        
         if (this.isMounted()) {
           this.setState({
             thumb: res[0].thumbnail_large,
