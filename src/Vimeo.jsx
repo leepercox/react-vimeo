@@ -184,8 +184,13 @@ export default React.createClass({
   },
 
   playVideo(e) {
-    e.preventDefault();
+    e && e.preventDefault();
     this.setState({ showingVideo: true });
+  },
+  
+  stopVideo(e) {
+    e && e.preventDefault();
+    this.setState({ showingVideo: false });
   },
 
   getIframeUrl() {
@@ -220,10 +225,13 @@ export default React.createClass({
           this.onError(err);
         }
         debug('jsonp response', res);
-        this.setState({
-          thumb: res[0].thumbnail_large,
-          imageLoaded: true
-        });
+        
+        if (this.isMounted()) {
+          this.setState({
+            thumb: res[0].thumbnail_large,
+            imageLoaded: true
+          });
+        }
       }
     );
   },
