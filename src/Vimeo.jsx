@@ -280,6 +280,9 @@ export default React.createClass({
         <iframe
           frameBorder='0'
           ref='player'
+          webkitAllowFullScreen
+          mozallowfullscreen
+          allowFullScreen
           src={ this.getIframeUrl() } />
       </div>
     );
