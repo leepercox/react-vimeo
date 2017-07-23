@@ -170,6 +170,11 @@ export default React.createClass({
   },
 
   onReady(player, playerOrigin) {
+    if (typeof $f === 'undefined' && this.props.noVolume) {
+      let newplayer = $f(player);
+      newplayer.api('setVolume', 0);
+    }
+
     Object.keys(playerEvents).forEach(event => {
       var err = post(
         'addEventListener',
